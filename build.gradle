@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+  id 'io.ebean' version '12.7.2'
 }
 
 group = 'com.example'
@@ -13,9 +14,20 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.4.3'
+  implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.4.3'
+
+  implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.3'
+
+  implementation 'com.microsoft.sqlserver:mssql-jdbc:9.2.0.jre11'
+  implementation 'io.ebean:ebean:12.7.2'
+  implementation group: 'io.ebean', name: 'ebean-ddl-generator', version: '12.7.2'
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+ebean {
+  debugLevel = 0
 }
 
 test {
