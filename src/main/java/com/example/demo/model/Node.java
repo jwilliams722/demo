@@ -10,9 +10,25 @@ public class Node extends BaseModel {
   @JoinColumn(name = "chart_id")
   private Chart chart;
 
-  @OneToMany(mappedBy = "fromNode", cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "fromNode")
   List<Edge> fromEdges;
 
-  @OneToMany(mappedBy ="toNode", cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy ="toNode")
   List<Edge> toEdges;
+
+  public Chart getChart() {
+    return chart;
+  }
+
+  public void setChart(Chart chart) {
+    this.chart = chart;
+  }
+
+  public List<Edge> getFromEdges() {
+    return fromEdges;
+  }
+
+  public List<Edge> getToEdges() {
+    return toEdges;
+  }
 }

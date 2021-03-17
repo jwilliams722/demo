@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Edge extends BaseModel {
-  
   @ManyToOne
   @JoinColumn(name = "chart_id")
   private Chart chart;
@@ -18,5 +17,28 @@ public class Edge extends BaseModel {
   @ManyToOne
   @JoinColumn(name = "to_node_id")
   private Node toNode;
-  
+
+  public Chart getChart() {
+    return chart;
+  }
+
+  public void setChart(Chart chart) {
+    this.chart = chart;
+  }
+
+  public Node getFromNode() {
+    return fromNode;
+  }
+
+  public void setFromNode(Node fromNode) {
+    this.fromNode = fromNode;
+  }
+
+  public Node getToNode() {
+    return toNode;
+  }
+
+  public void setToNode(Node toNode) {
+    this.toNode = toNode;
+  }
 }

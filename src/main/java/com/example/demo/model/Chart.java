@@ -21,4 +21,19 @@ public class Chart extends BaseModel {
   @OneToMany(mappedBy = "chart", cascade = CascadeType.REMOVE)
   private List<Node> nodes;
   
+  public Workspace getWorkspace() {
+    return workspace;
+  }
+
+  public void setWorkspace(Workspace workspace) {
+    this.workspace = workspace;
+  }
+
+  public List<Node> getNodes() {
+    return nodes;
+  }
+
+  public List<Edge> getEdges() {
+    return edges;
+  }
 }
