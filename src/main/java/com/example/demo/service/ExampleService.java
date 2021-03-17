@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import com.example.demo.model.Chart;
 import com.example.demo.model.Edge;
 import com.example.demo.model.Node;
@@ -11,24 +9,16 @@ import org.springframework.stereotype.Service;
 
 import io.ebean.Database;
 
+
 @Service
-public class WorkspaceService {
+public class ExampleService {
   private final Database database;
 
-  public WorkspaceService(Database database) {
+  public ExampleService(Database database) {
     this.database = database;
   }
 
-  public List<Workspace> findAll() {
-    return database.find(Workspace.class).findList();
-  }
-
-  public void delete(Long id) {
-    Workspace workspace = database.find(Workspace.class).where().eq("id", id).findOne();
-    workspace.delete();
-  }
-
-  public void populate() {
+  public void execute() {
     Workspace workspace = new Workspace();
     workspace.save();
 
@@ -49,5 +39,7 @@ public class WorkspaceService {
     edge.setFromNode(node1);
     edge.setToNode(node2);
     edge.save();
+
+    workspace.delete();
   }
 }

@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.example.demo.mixin.Auditable;
+
 @Entity
-public class Edge extends BaseModel {
+public class Edge extends BaseModel implements Auditable {
   @ManyToOne
   @JoinColumn(name = "chart_id")
   private Chart chart;

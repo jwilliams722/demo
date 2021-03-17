@@ -8,9 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Chart extends BaseModel {
+import com.example.demo.mixin.Auditable;
 
+@Entity
+public class Chart extends BaseModel implements Auditable {
   @ManyToOne
   @JoinColumn(name = "workspace_id", nullable = false)
   private Workspace workspace;
@@ -23,6 +24,11 @@ public class Chart extends BaseModel {
   
   public Workspace getWorkspace() {
     return workspace;
+  }
+
+  public Long getWorkspaceId() {
+    Workspace workspace = getWorkspace();
+    return workspace == null ? null : workspace.getId();
   }
 
   public void setWorkspace(Workspace workspace) {

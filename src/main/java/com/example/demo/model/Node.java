@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.example.demo.mixin.Auditable;
+
 @Entity
-public class Node extends BaseModel {
+public class Node extends BaseModel implements Auditable {
   @ManyToOne
   @JoinColumn(name = "chart_id")
   private Chart chart;
