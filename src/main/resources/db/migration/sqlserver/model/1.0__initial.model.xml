@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<migration xmlns="http://ebean-orm.github.io/xml/ns/dbmigration">
+    <changeSet type="apply">
+        <createTable name="chart" identityType="sequence" identityStart="1" identityIncrement="50" sequenceName="chart_seq" pkName="pk_chart">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="workspace_id" type="bigint" notnull="true" references="workspace.id" foreignKeyName="fk_chart_workspace_id" foreignKeyIndex="ix_chart_workspace_id"/>
+            <column name="version" type="bigint" notnull="true"/>
+            <column name="created_on" type="timestamp" notnull="true"/>
+            <column name="modified_on" type="timestamp" notnull="true"/>
+        </createTable>
+        <createTable name="edge" identityType="sequence" identityStart="1" identityIncrement="50" sequenceName="edge_seq" pkName="pk_edge">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="chart_id" type="bigint" references="chart.id" foreignKeyName="fk_edge_chart_id" foreignKeyIndex="ix_edge_chart_id"/>
+            <column name="from_node_id" type="bigint" references="node.id" foreignKeyName="fk_edge_from_node_id" foreignKeyIndex="ix_edge_from_node_id"/>
+            <column name="to_node_id" type="bigint" references="node.id" foreignKeyName="fk_edge_to_node_id" foreignKeyIndex="ix_edge_to_node_id"/>
+            <column name="version" type="bigint" notnull="true"/>
+            <column name="created_on" type="timestamp" notnull="true"/>
+            <column name="modified_on" type="timestamp" notnull="true"/>
+        </createTable>
+        <createTable name="node" identityType="sequence" identityStart="1" identityIncrement="50" sequenceName="node_seq" pkName="pk_node">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="chart_id" type="bigint" references="chart.id" foreignKeyName="fk_node_chart_id" foreignKeyIndex="ix_node_chart_id"/>
+            <column name="version" type="bigint" notnull="true"/>
+            <column name="created_on" type="timestamp" notnull="true"/>
+            <column name="modified_on" type="timestamp" notnull="true"/>
+        </createTable>
+        <createTable name="workspace" identityType="sequence" identityStart="1" identityIncrement="50" sequenceName="workspace_seq" pkName="pk_workspace">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="version" type="bigint" notnull="true"/>
+            <column name="created_on" type="timestamp" notnull="true"/>
+            <column name="modified_on" type="timestamp" notnull="true"/>
+        </createTable>
+    </changeSet>
+</migration>
